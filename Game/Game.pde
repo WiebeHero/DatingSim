@@ -1,3 +1,6 @@
 //Comment
 
 //EGG
+
+void draw(){
+}
