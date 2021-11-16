@@ -1,11 +1,16 @@
 abstract public class Scene{
   
-  private int id;
+  private String identifier;
   
-  public Scene(int id){
-    this.id = id;
+  public Scene(String identifier){
+    this.identifier = identifier;
   }
   
   abstract public void render();
+  
+  public String getIdentifier(){
+    return this.identifier;
+  }
+  
   
 }

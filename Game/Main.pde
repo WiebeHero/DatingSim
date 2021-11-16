@@ -13,4 +13,8 @@ public class Main{
   public void render(){
     this.sceneManager.render(); 
   }
+  
+  public void constructScenes(){
+    this.sceneManager.constructScenes();
+  }
 }
