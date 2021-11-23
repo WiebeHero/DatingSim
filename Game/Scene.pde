@@ -1,12 +1,30 @@
 abstract public class Scene{
   
-  private String identifier;
+  protected String identifier;
+  protected UIManager uiManager;
+  protected SceneManager sceneManager;
+  protected ImageManager imageManager;
   
-  public Scene(String identifier){
+  public Scene(String identifier, SceneManager sceneManager, ImageManager imageManager){
     this.identifier = identifier;
+    this.imageManager = imageManager;
+    this.sceneManager = sceneManager;
+    this.uiManager = new UIManager();
   }
   
-  abstract public void render();
+  public void render(){
+    this.uiManager.render();
+  }
+  
+  public void click(){
+    if(millis() >= sceneManager.clickCooldown){
+      this.uiManager.click();
+    }
+  }
+  
+  public UIManager getUIManager(){
+    return this.uiManager; 
+  }
   
   public String getIdentifier(){
     return this.identifier;

@@ -1,0 +1,7 @@
+DataType,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8
+Background,Starbucks
+Dialogue,Dit is de eerste zin,Dit is de tweede zin,Dit is de derde zin.
+Dialogue,Dit is de eerste zin
+Question,Choice 1,4
+Dialogue,Hey hey!,You made a choice!
+Dialogue,Isn't that great?,I think so atleast!

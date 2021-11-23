@@ -1,0 +1,188 @@
+public class DateMikeScene extends Scene{
+  
+  private FileLoader fileLoader;
+  private int sceneProgression, score;
+  private ArrayList<Button> buttons;
+  private ArrayList<Conversation> convos;
+  private CustomCharacter character;
+  private TextBox textBox;
+  private Empty empty;
+  private Background background;
+  
+  public DateMikeScene(String identifier, SceneManager sceneManager, ImageManager imageManager){
+    super(identifier, sceneManager, imageManager);
+    this.buttons = new ArrayList<Button>();
+    this.fileLoader = new FileLoader(this.imageManager);
+    this.convos = this.fileLoader.getConversations("DateMike.csv");
+    this.sceneProgression = 0;
+  }
+  
+  public void constructScene(){
+    UIManager uiManager = this.uiManager;
+    this.character = new CustomCharacter("Mike", this.imageManager.getImage("Mike_Normal"), 0.0D, 0.0D, 100, 100, Enums.RenderFrom.CENTER);
+    this.background = new Background(null, 0.0D, 0.0D, 1300, 800);
+    Text text = new Text("", 20, #FFFFFF, 2D, 20.0D, Enums.RenderFrom.TOP_LEFT);
+    this.textBox = new TextBox(text, this.imageManager.getImage("TextBox"), 50.0D, 87.5D, 1200, 150, Enums.RenderFrom.CENTER);
+    Text choiceOne = new Text("", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
+    Text choiceTwo = new Text("", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
+    Text choiceThree = new Text("", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
+    Text choiceFour = new Text("", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
+    this.buttons.add(new Button(choiceOne, this.imageManager.getImage("Choice"), 50.0D, 20.0D, 1200, 50, Enums.RenderFrom.CENTER){
+      public void click(){
+        for(int i = 0; i < 4; i++){
+          buttons.get(i).setRendering(false);
+          buttons.get(i).setClickable(false);
+        }
+        sceneProgression++;
+        score += this.getScore();
+        changeScene();
+        empty.setClickable(true);
+      }
+    });
+    this.buttons.get(0).setRendering(false);
+    this.buttons.get(0).setClickable(false);
+    this.buttons.add(new Button(choiceTwo, this.imageManager.getImage("Choice"), 50.0D, 30.0D, 1200, 50, Enums.RenderFrom.CENTER){
+      public void click(){
+        for(int i = 0; i < 4; i++){
+          buttons.get(i).setRendering(false);
+          buttons.get(i).setClickable(false);
+        }
+        sceneProgression++;
+        score += this.getScore();
+        changeScene();
+        empty.setClickable(true);
+      }
+    });
+    this.buttons.get(1).setRendering(false);
+    this.buttons.get(1).setClickable(false);
+    this.buttons.add(new Button(choiceThree, this.imageManager.getImage("Choice"), 50.0D, 30.0D, 1200, 50, Enums.RenderFrom.CENTER){
+      public void click(){
+        for(int i = 0; i < 4; i++){
+          buttons.get(i).setRendering(false);
+          buttons.get(i).setClickable(false);
+        }
+        sceneProgression++;
+        score += this.getScore();
+        changeScene();
+        empty.setClickable(true);
+      }
+    });
+    this.buttons.get(2).setRendering(false);
+    this.buttons.get(2).setClickable(false);
+    this.buttons.add(new Button(choiceFour, this.imageManager.getImage("Choice"), 50.0D, 30.0D, 1200, 50, Enums.RenderFrom.CENTER){
+      public void click(){
+        for(int i = 0; i < 4; i++){
+          buttons.get(i).setRendering(false);
+          buttons.get(i).setClickable(false);
+        }
+        sceneProgression++;
+        score += this.getScore();
+        changeScene();
+        empty.setClickable(true);
+      }
+    });
+    this.buttons.get(3).setRendering(false);
+    this.buttons.get(3).setClickable(false);
+    Box box = new Box(50.0D, 50.0D, 1300, 800, Enums.RenderFrom.CENTER);
+    this.empty = new Empty(50.0D, 50.0D, 1300, 800, Enums.RenderFrom.CENTER){
+      public void click(){
+        sceneProgression++;
+        changeScene();
+      }
+    };
+    box.addObject(this.background);
+    box.addObject(this.textBox);
+    box.addObject(this.buttons.get(0));
+    box.addObject(this.buttons.get(1));
+    box.addObject(this.buttons.get(2));
+    box.addObject(this.buttons.get(3));
+    box.addObject(this.empty);
+    uiManager.addObject(box);
+    this.changeScene();
+  }
+  
+  public void changeScene(){
+    Conversation conversation = this.convos.get(sceneProgression);
+    switch(conversation.getProceedType()){
+      case BACKGROUND:
+        this.sceneManager.clickCooldown();
+        BackgroundScene background = (BackgroundScene)conversation;
+        this.background.setBackground(background.getImage());
+        this.sceneProgression++;
+        this.changeScene();
+        break;
+      case DIALOGUE:
+        this.sceneManager.clickCooldown();
+        Dialogue dialogue = (Dialogue)conversation;
+        ArrayList<String> texts = dialogue.getDialogue();
+        String finalText = "";
+        for(int i = 0; i < texts.size(); i++){
+          if(!texts.get(i).contains("null")){
+            finalText += texts.get(i);
+          }
+        }
+        Text text = this.textBox.getText();
+        text.setContents(finalText);
+        break;
+      case QUESTION:
+        this.sceneManager.clickCooldown();
+        this.empty.setClickable(false);
+        Question question = (Question)conversation;
+        ArrayList<String> questions = question.getQuestions();
+        ArrayList<Integer> scores = question.getScores();
+        int size = questions.size();
+        switch(size){
+          case 1:
+            double yPos = 22.5D;
+            Button button = this.buttons.get(0);
+            button.setYPercent(yPos);
+            button.setRendering(true);
+            button.setClickable(true);
+            button.setScore(scores.get(0));
+            break;
+          case 2:
+            yPos = 18.5D;
+            for(int i = 0; i < size; i++){
+              this.buttons.get(i).setYPercent(yPos);
+              this.buttons.get(i).setRendering(true);
+              this.buttons.get(i).setClickable(true);
+              this.buttons.get(i).setScore(scores.get(i));
+              yPos += 8.0D;
+            }
+            break;
+          case 3:
+            yPos = 14.5D;
+            for(int i = 0; i < size; i++){
+              this.buttons.get(i).setYPercent(yPos);
+              this.buttons.get(i).setRendering(true);
+              this.buttons.get(i).setClickable(true);
+              this.buttons.get(i).setScore(scores.get(i));
+              yPos += 8.0D;
+            }
+            break;
+          case 4:
+            yPos = 10.5D;
+            for(int i = 0; i < size; i++){
+              this.buttons.get(i).setYPercent(yPos);
+              this.buttons.get(i).setRendering(true);
+              this.buttons.get(i).setClickable(true);
+              this.buttons.get(i).setScore(scores.get(i));
+              yPos += 8.0D;
+            }
+            break;
+        }
+        for(int i = 0; i < questions.size(); i++){
+          Button button = this.buttons.get(i);
+          Text buttonText = button.getText();
+          buttonText.setContents(questions.get(i));
+          buttonText.positionPercent();
+          buttonText.renderFrom();
+        }
+        break;
+      case CHARACTER:
+        
+        break;
+    }
+  }
+  
+}
