@@ -1,9 +1,32 @@
 DataType,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8
 Background,Starbucks
-Character,Mike1,Percentages,50.0,50.0,210,570,CENTER
-Dialogue,Dit is de eerste zin,Dit is de tweede zin,Dit is de derde zin.
-Dialogue,What food do you like?
-Question,Lasagne,Pizza,Ooga booga,5,2,-5
-Dialogue,Hey hey!,You made a choice!
-Dialogue,Isn't that great?,I think so atleast!
-Dialogue,This would be the first sentence!,This would be the second sentence!
+Character,Mike1,Percentage,50.0,50.0,210,570,Center
+Dialogue,*You’re on your way to your date with Mark at Starbucks.,You get in and order a coffee.*
+Dialogue,*The barista asks you what kind of drink you want.*
+Dialogue,What drink do you want?
+Question,Hot Chocolate,Matcha,Mocha Frappuccino,1,1,1
+Dialogue, 
+Dialogue,*You wait for your drink and look around curiously*,*your eyes catch the glimpse of Mark*
+Dialogue,Barista: Hello your drink is ready!
+Question,Get your drink,1
+Dialogue,
+Dialogue,*You grab your drink and walk up to Mark*
+Dialogue,”your name”: Hey Mark, I’m your Date for today ;)
+Dialogue,Mark: Hey “Your Name”,Nice to meet you!
+Dialogue,Mark: I was afraid you weren't going to come today., but nice that you made it!
+Dialogue,”Your name”: Mark....😊 How can you think something like this,You’re cute I would not pass this opportunity.
+Dialogue,*What will you do?*
+Question,Offer Mark a sip of your coffee,Drink it alone,3,1
+Dialogue,
+Dialogue,Mark:You have a great taste in coffee!
+Dialogue,”your name”: Its “Add Coffee Name”.
+Dialogue,+Will you buy Mark a coffee?
+Question,Buy Mark a coffee,Don’t pay Mark’s coffee,3,1
+Dialogue,
+Dialogue,*Mark gets his coffee* Mark: You want to go for a walk with me? I would love to get to know you better!
+Dialogue,Sure lets go i would to catch some fresh air with you
+Background,CityPark
+Dialogue,*You both went out and walked to the park nearby*,*you feel the fresh air flowing through your hair.*, You look right..... you look at Mark... seeing how he too enjoys the simple things in life such as grabbing a coffee and going for s stroll...
+Dialogue,Mark: I’m glad I went to that coffee shop because I got to meet such a wonderful person like you! Will I ever get to see you again? 
+Question,Kiss them,Give them your number,“I don’t feel the connection Mark I need to go...”,2,3,1
+Dialogue, 
