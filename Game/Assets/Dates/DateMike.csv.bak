@@ -1,19 +1,9 @@
 DataType,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8
 Background,Starbucks
-<<<<<<< Updated upstream
-Character,Mike1,Percentages,50.0,50.0,210,570,CENTER
-Dialogue,Dit is de eerste zin,Dit is de tweede zin,Dit is de derde zin.
-Dialogue,What food do you like?
-Question,Lasagne,Pizza,Ooga booga,5,2,-5
-Dialogue,Hey hey!,You made a choice!
-Dialogue,Isn't that great?,I think so atleast!
-Dialogue,This would be the first sentence!,This would be the second sentence!
-=======
 Dialogue,*You’re on your way to your date with Mark at Starbucks.,You get in and order a coffee.* 
 Dialogue,*The barista asks you what kind of drink you want.*  
 Dialogue,What drink do you want? 
-Question,Hot Chocolate,Matcha,Mocha Frappuccino,1,2,3
-  
+Question,Hot Chocolate,Matcha,Mocha Frappuccino,1,2,3  
 Dialogue,*You wait for your drink and look around curiously*,*your eyes catch the glimpse of Mark* 
 Dialogue,Barista: Hello your drink is ready! 
 Question, Get your drink, 1 
@@ -24,4 +14,3 @@ Dialogue,Mark: I was afraid you weren't going to come today., but nice that you 
 Dialogue,”Your name”: Mark....😊 How can you think something like this,You’re cute I would not pass this opportunity.  
 Dialogue, *What will you do?* 
 Question, Offer Mark a sip of your coffee,Drink it alone,3,1 
->>>>>>> Stashed changes
