@@ -49,7 +49,7 @@ public abstract class UIObject{
   public UIObject(double xPercent, double yPercent, float bWidth, float bHeight, Enums.RenderFrom renderFrom){
     this.xPercent = xPercent;
     this.yPercent = yPercent;
-    this.bounds = new Bounds(x, y, bWidth, bHeight);
+    this.bounds = new Bounds(this.x, this.y, bWidth, bHeight);
     this.positionPercent(xPercent, yPercent);
     this.renderFrom = renderFrom;
     this.render = true;
@@ -117,28 +117,32 @@ public abstract class UIObject{
   }
   
   protected void positionPercent(double xPercent, double yPercent){
-    if(this.parent != null){
-      this.x = this.parent.getX() + this.parent.getBounds().getWidth() / 100.0 * (float)xPercent;
-      this.y = this.parent.getY() + this.parent.getBounds().getHeight() / 100.0 * (float)yPercent;
-      this.bounds.x = this.x;
-      this.bounds.y = this.y;
-    }
-    else{
-      this.x = width / 100 * (float)xPercent;
-      this.y = height / 100 * (float)yPercent;
+    if(xPercent != 0.00 && yPercent != 0.00){
+      if(this.parent != null){
+        this.x = this.parent.getX() + this.parent.getBounds().getWidth() / 100.0 * (float)xPercent;
+        this.y = this.parent.getY() + this.parent.getBounds().getHeight() / 100.0 * (float)yPercent;
+        this.bounds.x = this.x;
+        this.bounds.y = this.y;
+      }
+      else{
+        this.x = width / 100 * (float)xPercent;
+        this.y = height / 100 * (float)yPercent;
+      }
     }
   }
   
   protected void positionPercent(){
-    if(this.parent != null){
-      this.x = this.parent.getX() + this.parent.getBounds().getWidth() / 100.0 * (float)this.xPercent;
-      this.y = this.parent.getY() + this.parent.getBounds().getHeight() / 100.0 * (float)this.yPercent;
-      this.bounds.x = this.x;
-      this.bounds.y = this.y;
-    }
-    else{
-      this.x = width / 100 * (float)this.xPercent;
-      this.y = height / 100 * (float)this.yPercent;
+    if(this.xPercent != 0.00 && this.yPercent != 0.00){
+      if(this.parent != null){
+        this.x = this.parent.getX() + this.parent.getBounds().getWidth() / 100.0 * (float)this.xPercent;
+        this.y = this.parent.getY() + this.parent.getBounds().getHeight() / 100.0 * (float)this.yPercent;
+        this.bounds.x = this.x;
+        this.bounds.y = this.y;
+      }
+      else{
+        this.x = width / 100 * (float)this.xPercent;
+        this.y = height / 100 * (float)this.yPercent;
+      }
     }
   }
   
@@ -147,31 +151,53 @@ public abstract class UIObject{
   public abstract void click();
   
   public float getX(){
-    return this.x; 
+    return this.x;
   }
   
-  public void setX(float x){
-    this.x = x; 
+  public void setX(float x, boolean renderFrom){
+    this.x = x;
+    if(renderFrom){
+      this.renderFrom();
+    }
   }
   
   public float getY(){
-    return this.y; 
+    return this.y;
   }
   
-  public void setY(float y){
-    this.y = y;  
+  public void setY(float y, boolean renderFrom){
+    this.y = y;
+    if(renderFrom){
+      this.renderFrom();
+    }
   }
   
-  public void setXPercent(double xPercent){
+  public void setXPercent(double xPercent, boolean renderFrom){
     this.xPercent = xPercent;
-    this.positionPercent();
-    this.renderFrom();
+    if(renderFrom){
+      this.positionPercent();
+      this.renderFrom();
+    }
   }
   
-  public void setYPercent(double yPercent){
+  public void setYPercent(double yPercent, boolean renderFrom){
     this.yPercent = yPercent;
-    this.positionPercent();
-    this.renderFrom();
+    if(renderFrom){
+      this.positionPercent();
+      this.renderFrom();
+    }
+  }
+  
+  public Enums.RenderFrom getRenderingFrom(){
+    return this.renderFrom;
+  }
+  
+  public void setRenderingFrom(Enums.RenderFrom renderFrom, boolean renderForm){
+    this.renderFrom = renderFrom;
+    if(renderForm){
+      this.positionPercent();
+      this.renderFrom();
+    }
   }
   
   public Bounds getBounds(){

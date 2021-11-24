@@ -44,11 +44,36 @@ public class FileLoader{
         convos.add(question);
       }
       else if(dataType.equalsIgnoreCase("Background")){
-        println("Waw!");
         String background = row.getString("Option1");
         Image image = this.imageManager.getImage(background);
         BackgroundScene backgroundScene = new BackgroundScene(image);
         convos.add(backgroundScene);
+      }
+      else if(dataType.equalsIgnoreCase("Character")){
+        String character = row.getString("Option1");
+        Image image = this.imageManager.getImage(character);
+        int x = 0;
+        int y = 0;
+        double xPercent = 0.00;
+        double yPercent = 0.00;
+        String orderType = row.getString("Option2");
+        float bWidth = row.getFloat("Option5");
+        float bHeight = row.getFloat("Option6");
+        Enums.RenderFrom renderFrom = Enums.RenderFrom.valueOf(row.getString("Option7"));
+        CharacterData characterData = null;
+        if(orderType.equalsIgnoreCase("Coordinates")){
+          x = row.getInt("Option3");
+          y = row.getInt("Option4");
+          characterData = new CharacterData(image, x, y, bWidth, bHeight, renderFrom);
+        }
+        else if(orderType.equalsIgnoreCase("Percentages")){
+          xPercent = row.getDouble("Option3");
+          yPercent = row.getDouble("Option4");
+          characterData = new CharacterData(image, xPercent, yPercent, bWidth, bHeight, renderFrom);
+        }
+        println(x);
+        println(y);
+        convos.add(characterData);
       }
     }
     return convos;

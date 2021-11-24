@@ -43,4 +43,5 @@ public class Image{
   public String getIdentifier(){
     return this.identifier;
   }
+  
 }

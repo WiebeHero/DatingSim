@@ -19,9 +19,9 @@ public class DateMikeScene extends Scene{
   
   public void constructScene(){
     UIManager uiManager = this.uiManager;
-    this.character = new CustomCharacter("Mike", this.imageManager.getImage("Mike_Normal"), 0.0D, 0.0D, 100, 100, Enums.RenderFrom.CENTER);
+    this.character = new CustomCharacter("Mike", null, 500, 500, 100, 100, Enums.RenderFrom.CENTER);
     this.background = new Background(null, 0.0D, 0.0D, 1300, 800);
-    Text text = new Text("", 20, #FFFFFF, 2D, 20.0D, Enums.RenderFrom.TOP_LEFT);
+    Text text = new Text("", 20, #FFFFFF, 4D, 22.5D, Enums.RenderFrom.TOP_LEFT);
     this.textBox = new TextBox(text, this.imageManager.getImage("TextBox"), 50.0D, 87.5D, 1200, 150, Enums.RenderFrom.CENTER);
     Text choiceOne = new Text("", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
     Text choiceTwo = new Text("", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
@@ -91,6 +91,7 @@ public class DateMikeScene extends Scene{
       }
     };
     box.addObject(this.background);
+    box.addObject(this.character);
     box.addObject(this.textBox);
     box.addObject(this.buttons.get(0));
     box.addObject(this.buttons.get(1));
@@ -105,7 +106,6 @@ public class DateMikeScene extends Scene{
     Conversation conversation = this.convos.get(sceneProgression);
     switch(conversation.getProceedType()){
       case BACKGROUND:
-        this.sceneManager.clickCooldown();
         BackgroundScene background = (BackgroundScene)conversation;
         this.background.setBackground(background.getImage());
         this.sceneProgression++;
@@ -135,7 +135,7 @@ public class DateMikeScene extends Scene{
           case 1:
             double yPos = 22.5D;
             Button button = this.buttons.get(0);
-            button.setYPercent(yPos);
+            button.setYPercent(yPos, true);
             button.setRendering(true);
             button.setClickable(true);
             button.setScore(scores.get(0));
@@ -143,7 +143,7 @@ public class DateMikeScene extends Scene{
           case 2:
             yPos = 18.5D;
             for(int i = 0; i < size; i++){
-              this.buttons.get(i).setYPercent(yPos);
+              this.buttons.get(i).setYPercent(yPos, true);
               this.buttons.get(i).setRendering(true);
               this.buttons.get(i).setClickable(true);
               this.buttons.get(i).setScore(scores.get(i));
@@ -153,7 +153,7 @@ public class DateMikeScene extends Scene{
           case 3:
             yPos = 14.5D;
             for(int i = 0; i < size; i++){
-              this.buttons.get(i).setYPercent(yPos);
+              this.buttons.get(i).setYPercent(yPos, true);
               this.buttons.get(i).setRendering(true);
               this.buttons.get(i).setClickable(true);
               this.buttons.get(i).setScore(scores.get(i));
@@ -163,7 +163,7 @@ public class DateMikeScene extends Scene{
           case 4:
             yPos = 10.5D;
             for(int i = 0; i < size; i++){
-              this.buttons.get(i).setYPercent(yPos);
+              this.buttons.get(i).setYPercent(yPos, true);
               this.buttons.get(i).setRendering(true);
               this.buttons.get(i).setClickable(true);
               this.buttons.get(i).setScore(scores.get(i));
@@ -180,7 +180,21 @@ public class DateMikeScene extends Scene{
         }
         break;
       case CHARACTER:
-        
+        CharacterData characterData = (CharacterData)conversation;
+        character.getBounds().setWidth((float)characterData.getWidth());
+        character.getBounds().setHeight((float)characterData.getHeight());
+        character.setImage(characterData.getImage());
+        character.setRenderingFrom(characterData.getRenderingFrom(), false);
+        if(characterData.getType().equals("Coordinates")){
+          character.setX(characterData.getX(), false);
+          character.setY(characterData.getY(), true);
+        }
+        else if(characterData.getType().equals("Percentages")){
+          character.setXPercent(characterData.getXPercent(), false);
+          character.setYPercent(characterData.getYPercent(), true);
+        }
+        sceneProgression++;
+        this.changeScene();
         break;
     }
   }

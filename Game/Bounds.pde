@@ -21,8 +21,16 @@ public class Bounds{
    return this.bWidth; 
   }
   
+  public void setWidth(float bWidth){
+    this.bWidth = bWidth;
+  }
+  
   public float getHeight(){
    return this.bHeight; 
+  }
+  
+  public void setHeight(float bHeight){
+    this.bHeight = bHeight;
   }
   
   public boolean isHovering(){
