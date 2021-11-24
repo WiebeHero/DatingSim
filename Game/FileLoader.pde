@@ -10,6 +10,7 @@ public class FileLoader{
     ArrayList<Conversation> convos = new ArrayList<Conversation>();
     boolean done = false;
     Table table = loadTable("Assets/Dates/DateMike.csv", "header");
+    Ending ending = null;
     for(TableRow row : table.rows()){
       String dataType = row.getString("DataType");
       if(dataType.equalsIgnoreCase("Dialogue")){
@@ -19,7 +20,12 @@ public class FileLoader{
           lines.add(line);
         }
         Dialogue dialogue = new Dialogue(lines);
-        convos.add(dialogue);
+        if(ending == null){
+          convos.add(dialogue);
+        }
+        else{
+          ending.addConversation(dialogue);
+        }
       }
       else if(dataType.equalsIgnoreCase("Question")){
         int choiceAmount = 0;
@@ -41,13 +47,23 @@ public class FileLoader{
           scores.add(score);
         }
         Question question = new Question(choices, scores);
-        convos.add(question);
+        if(ending == null){
+          convos.add(question);
+        }
+        else{
+          ending.addConversation(question);
+        }
       }
       else if(dataType.equalsIgnoreCase("Background")){
         String background = row.getString("Option1");
         Image image = this.imageManager.getImage(background);
         BackgroundScene backgroundScene = new BackgroundScene(image);
-        convos.add(backgroundScene);
+        if(ending == null){
+          convos.add(backgroundScene);
+        }
+        else{
+          ending.addConversation(backgroundScene);
+        }
       }
       else if(dataType.equalsIgnoreCase("Character")){
         String character = row.getString("Option1");
@@ -71,11 +87,37 @@ public class FileLoader{
           yPercent = row.getDouble("Option4");
           characterData = new CharacterData(image, xPercent, yPercent, bWidth, bHeight, renderFrom);
         }
-        println(x);
-        println(y);
-        convos.add(characterData);
+        if(ending == null){
+          convos.add(characterData);
+        }
+        else{
+          ending.addConversation(characterData);
+        }
+      }
+      else if(dataType.equalsIgnoreCase("End")){
+        End end = new End();
+        convos.add(end);
+      }
+      else if(dataType.equalsIgnoreCase("GoodEnding")){
+        if(ending != null){
+          convos.add(ending);
+        }
+        ending = new Ending(Enums.ProceedType.GOOD_ENDING);
+      }
+      else if(dataType.equalsIgnoreCase("NeutralEnding")){
+        if(ending != null){
+          convos.add(ending);
+        }
+        ending = new Ending(Enums.ProceedType.NEUTRAL_ENDING);
+      }
+      else if(dataType.equalsIgnoreCase("BadEnding")){
+        if(ending != null){
+          convos.add(ending);
+        }
+        ending = new Ending(Enums.ProceedType.BAD_ENDING);
       }
     }
+    convos.add(ending);
     return convos;
   }
 }

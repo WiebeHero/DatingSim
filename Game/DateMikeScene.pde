@@ -7,6 +7,7 @@ public class DateMikeScene extends Scene{
   private CustomCharacter character;
   private TextBox textBox;
   private Empty empty;
+  private Ending ending;
   private Background background;
   
   public DateMikeScene(String identifier, SceneManager sceneManager, ImageManager imageManager){
@@ -104,6 +105,16 @@ public class DateMikeScene extends Scene{
   
   public void changeScene(){
     Conversation conversation = this.convos.get(sceneProgression);
+    if(ending == null){
+      this.dialogue(this.convos.get(sceneProgression));
+    }
+    else{
+      this.dialogue(this.ending.getConvos().get(sceneProgression));
+      printArray(this.ending.getConvos());
+    }
+  }
+  
+  private void dialogue(Conversation conversation){
     switch(conversation.getProceedType()){
       case BACKGROUND:
         BackgroundScene background = (BackgroundScene)conversation;
@@ -196,7 +207,34 @@ public class DateMikeScene extends Scene{
         sceneProgression++;
         this.changeScene();
         break;
+      case END: 
+        if(score <= 5){
+          for(int i = 0; i < this.convos.size(); i++){
+            Conversation convo = this.convos.get(i);
+            if(convo.getProceedType() == Enums.ProceedType.BAD_ENDING){
+              this.ending = (Ending)convo;
+            }
+          }
+        }
+        else if(score > 5 && score < 15){
+          for(int i = 0; i < this.convos.size(); i++){
+            Conversation convo = this.convos.get(i);
+            if(convo.getProceedType() == Enums.ProceedType.NEUTRAL_ENDING){
+              this.ending = (Ending)convo;
+            }
+          }
+        }
+        else if(score >= 15){
+          for(int i = 0; i < this.convos.size(); i++){
+            Conversation convo = this.convos.get(i);
+            if(convo.getProceedType() == Enums.ProceedType.GOOD_ENDING){
+              this.ending = (Ending)convo;
+            }
+          }
+        }
+        sceneProgression = 0;
+        this.changeScene();
+        break;
     }
   }
-  
 }

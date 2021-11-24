@@ -11,6 +11,10 @@ public class Enums{
      QUESTION,
      DIALOGUE,
      BACKGROUND,
-     CHARACTER
+     CHARACTER,
+     GOOD_ENDING,
+     BAD_ENDING,
+     NEUTRAL_ENDING,
+     END
    }
 }

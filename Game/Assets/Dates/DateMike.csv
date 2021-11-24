@@ -14,3 +14,17 @@ Dialogue,Mark: I was afraid you weren't going to come today., but nice that you 
 Dialogue,”Your name”: Mark....😊 How can you think something like this,You’re cute I would not pass this opportunity.
 Dialogue, *What will you do?*
 Question, Offer Mark a sip of your coffee,Drink it alone,3,1
+Dialogue,
+Dialogue, That's so cool!
+End
+GoodEnding
+Background,ForestGood
+Dialogue,Ain't that so super cool?
+Dialogue,Atleast that's what i think
+NeutralEnding
+Dialogue,Hihi,Haha,Hoho
+Dialogue,Finished!
+BadEnding
+Background,ForestBad
+Dialogue,Hey look. It has been fun, but i gotta kill you now
+Dialogue,OOGA BOOGA
