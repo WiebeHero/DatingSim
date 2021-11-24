@@ -10,4 +10,8 @@ public abstract class Conversation{
     return this.proceedType;
   }
   
+  public void setProceedType(Enums.ProceedType proceedType){
+    this.proceedType = proceedType;
+  }
+  
 }
