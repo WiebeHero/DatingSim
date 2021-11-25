@@ -114,7 +114,7 @@ public class DateMikeScene extends Scene{
       this.dialogue(this.convos.get(sceneProgression));
     }
     else{
-      if(this.ending.){
+      if(this.sceneProgression < this.ending.getConvos().size()){
         this.dialogue(this.ending.getConvos().get(sceneProgression));
         printArray(this.ending.getConvos());
       }
