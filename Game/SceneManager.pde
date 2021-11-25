@@ -6,10 +6,12 @@ public class SceneManager {
   private String activeScene;
   private CharacterManager characterManager;
   private ImageManager imageManager;
+  private SoundManager soundManager;
   private ArrayList<Scene> scenes;
 
-  public SceneManager(ImageManager imageManager) {
+  public SceneManager(ImageManager imageManager, SoundManager soundManager) {
     this.imageManager = imageManager;
+    this.soundManager = soundManager;
     this.scenes = new ArrayList<Scene>();
     this.characterManager = new CharacterManager();
   }
@@ -66,7 +68,7 @@ public class SceneManager {
     this.scenes.add(dateScene);
   
     //MIKE DATE SCENE
-    DateMikeScene dateMikeScene = new DateMikeScene("DATE_MIKE", this, this.imageManager);
+    DateMikeScene dateMikeScene = new DateMikeScene("DATE_MIKE", this, this.imageManager, this.soundManager);
     dateMikeScene.constructScene();
     this.scenes.add(dateMikeScene);
     Collections.reverse(this.scenes);

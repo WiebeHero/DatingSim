@@ -13,6 +13,8 @@ public class Enums{
      BACKGROUND,
      CHARACTER,
      PLAYER,
+     PLAY_THEME,
+     STOP_THEME,
      GOOD_ENDING,
      BAD_ENDING,
      NEUTRAL_ENDING,

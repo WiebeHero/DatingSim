@@ -1,9 +1,11 @@
 public class FileLoader{
   
   private ImageManager imageManager;
+  private SoundManager soundManager;
   
-  public FileLoader(ImageManager imageManager){
+  public FileLoader(ImageManager imageManager, SoundManager soundManager){
     this.imageManager = imageManager;
+    this.soundManager = soundManager;
   }
   
   public ArrayList<Conversation> getConversations(String filePath){
@@ -127,6 +129,26 @@ public class FileLoader{
         }
         else{
           ending.addConversation(characterData);
+        }
+      }
+      else if(dataType.equalsIgnoreCase("PlayTheme")){
+        String themeToPlay = row.getString("Option1");
+        PlayTheme theme = new PlayTheme(themeToPlay);
+        if(ending == null){
+          convos.add(theme);
+        }
+        else{
+          ending.addConversation(theme);
+        }
+      }
+      else if(dataType.equalsIgnoreCase("StopTheme")){
+        String themeToStop = row.getString("Option1");
+        StopTheme theme = new StopTheme(themeToStop);
+        if(ending == null){
+          convos.add(theme);
+        }
+        else{
+          ending.addConversation(theme);
         }
       }
       else if(dataType.equalsIgnoreCase("End")){

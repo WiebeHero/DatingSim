@@ -4,6 +4,7 @@ public class DateMikeScene extends Scene{
   private int sceneProgression, score;
   private ArrayList<Button> buttons;
   private ArrayList<Conversation> convos;
+  private SoundManager soundManager;
   private CustomCharacter character, player;
   private TextBox textBox;
   private Text endText;
@@ -11,10 +12,11 @@ public class DateMikeScene extends Scene{
   private Ending ending;
   private Background background;
   
-  public DateMikeScene(String identifier, SceneManager sceneManager, ImageManager imageManager){
+  public DateMikeScene(String identifier, SceneManager sceneManager, ImageManager imageManager, SoundManager soundManager){
     super(identifier, sceneManager, imageManager);
     this.buttons = new ArrayList<Button>();
-    this.fileLoader = new FileLoader(this.imageManager);
+    this.soundManager = soundManager;
+    this.fileLoader = new FileLoader(this.imageManager, this.soundManager);
     this.convos = this.fileLoader.getConversations("DateMike.csv");
     this.sceneProgression = 0;
   }
@@ -243,6 +245,20 @@ public class DateMikeScene extends Scene{
         if(player.getImage() != null){
           player.getImage().setFlipped(playerData.isFlipped());
         }
+        sceneProgression++;
+        this.changeScene();
+        break;
+      case PLAY_THEME:
+        PlayTheme playTheme = (PlayTheme)conversation;
+        Sound soundPlay = this.soundManager.getSound(playTheme.getThemeToPlay());
+        soundPlay.play();
+        sceneProgression++;
+        this.changeScene();
+        break;
+      case STOP_THEME:
+        StopTheme stopTheme = (StopTheme)conversation;
+        Sound soundStop = this.soundManager.getSound(stopTheme.getThemeToStop());
+        soundStop.stop();
         sceneProgression++;
         this.changeScene();
         break;

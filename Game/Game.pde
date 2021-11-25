@@ -1,4 +1,5 @@
 //Road to Love
+Sound starbucks, park;
 Main main;
 
 void setup(){
@@ -9,6 +10,12 @@ void setup(){
    main = new Main();
    main.constructImages();
    main.constructScenes();
+   Config config = main.getConfig();
+   SoundManager soundManager = main.getSoundManager();
+   starbucks = new Sound("Starbucks", new SoundFile(this, config.getAssetPath() + "/Sounds/Starbucks.aiff"));
+   park = new Sound("Park", new SoundFile(this, config.getAssetPath() + "/Sounds/Park.wav"));
+   soundManager.addSound(starbucks);
+   soundManager.addSound(park);
 }
 
 void draw(){
