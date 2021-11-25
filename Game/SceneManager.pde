@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class SceneManager {
 
   private long clickCooldown;
@@ -67,6 +69,7 @@ public class SceneManager {
     DateMikeScene dateMikeScene = new DateMikeScene("DATE_MIKE", this, this.imageManager);
     dateMikeScene.constructScene();
     this.scenes.add(dateMikeScene);
+    Collections.reverse(this.scenes);
   }
   
   public String getActiveScene() {
@@ -75,6 +78,16 @@ public class SceneManager {
   
   public void setActiveScene(String activeScene) {
     this.activeScene = activeScene;
+  }
+  
+  public Scene getActiveSceneObject(String identifier){
+    for(int i = 0; i < this.scenes.size(); i++){
+      Scene scene = this.scenes.get(i);
+      if(scene.getIdentifier().equals(identifier)){
+        return scene;
+      }
+    }
+    return null;
   }
   
   public CharacterManager getCharacterManager() {

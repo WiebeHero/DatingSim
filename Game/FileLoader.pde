@@ -87,6 +87,41 @@ public class FileLoader{
           yPercent = row.getDouble("Option4");
           characterData = new CharacterData(image, xPercent, yPercent, bWidth, bHeight, renderFrom);
         }
+        boolean flipped = Boolean.valueOf(row.getString("Option8"));
+        if(ending == null){
+          convos.add(characterData);
+        }
+        else{
+          ending.addConversation(characterData);
+        }
+      }
+      else if(dataType.equalsIgnoreCase("Player")){
+        String character1 = row.getString("Option1");
+        String character2 = row.getString("Option2");
+        String character3 = row.getString("Option3");
+        Image image1 = this.imageManager.getImage(character1);
+        Image image2 = this.imageManager.getImage(character2);
+        Image image3 = this.imageManager.getImage(character3);
+        int x = 0;
+        int y = 0;
+        double xPercent = 0.00;
+        double yPercent = 0.00;
+        String orderType = row.getString("Option4");
+        float bWidth = row.getFloat("Option7");
+        float bHeight = row.getFloat("Option8");
+        Enums.RenderFrom renderFrom = Enums.RenderFrom.valueOf(row.getString("Option9"));
+        CharacterData characterData = null;
+        boolean flipped = Boolean.valueOf(row.getString("Option10"));
+        if(orderType.equalsIgnoreCase("Coordinates")){
+          x = row.getInt("Option5");
+          y = row.getInt("Option6");
+          characterData = new CharacterData(Enums.ProceedType.PLAYER, x, y, bWidth, bHeight, renderFrom, flipped, image1, image2, image3);
+        }
+        else if(orderType.equalsIgnoreCase("Percentages")){
+          xPercent = row.getDouble("Option5");
+          yPercent = row.getDouble("Option6");
+          characterData = new CharacterData(Enums.ProceedType.PLAYER, xPercent, yPercent, bWidth, bHeight, renderFrom, flipped, image1, image2, image3);
+        }
         if(ending == null){
           convos.add(characterData);
         }

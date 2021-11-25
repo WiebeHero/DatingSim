@@ -37,11 +37,19 @@ public class CustomCharacter extends UIObject{
     
   }
   
+  public Image getImage(){
+    return this.image;
+  }
+  
   public void setImage(Image image){
     this.image = image;
     if(this.image != null){
       this.image.setWidth((int)this.bounds.getWidth());
       this.image.setHeight((int)this.bounds.getHeight());
     }
+  }
+  
+  public String getName(){
+    return this.characterName;
   }
 }

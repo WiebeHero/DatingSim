@@ -13,7 +13,9 @@ public class Box extends UIObject{
     rect(this.x, this.y, this.bounds.bWidth, this.bounds.bHeight);
     for(int i = 0; i < this.objects.size(); i++){
       UIObject object = this.objects.get(i);
-      object.render();
+      if(object.isRendering()){
+        object.render();
+      }
     }
   }
   

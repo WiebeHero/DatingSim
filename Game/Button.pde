@@ -19,7 +19,7 @@ public class Button extends UIObject{
   public Button(Text text, PImage image, String identifier, double xPercent, double yPercent, float bWidth, float bHeight, Enums.RenderFrom renderFrom){
     super(xPercent, yPercent, bWidth, bHeight, renderFrom);
     this.text = text;
-    this.image = new Image(image, (int)bWidth, (int)bHeight, identifier);
+    this.image = new Image(image, (int)bWidth, (int)bHeight, identifier, false);
     if(image != null){
       this.image.setWidth((int)this.bounds.getWidth());
       this.image.setHeight((int)this.bounds.getHeight());

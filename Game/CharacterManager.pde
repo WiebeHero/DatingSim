@@ -1,20 +1,20 @@
 public class CharacterManager{
   
   private String playerName;
-  private String chosenCharacter;
+  private int chosenCharacter;
   private String chosenDate;
   
   public CharacterManager(){
     this.playerName = "";
-    this.chosenCharacter = "";
+    this.chosenCharacter = 0;
     this.chosenDate = "";
   }
   
-  public String getChosenCharacter(){
+  public int getChosenCharacter(){
     return this.chosenCharacter;
   }
   
-  public void setChosenCharacter(String chosenCharacter){
+  public void setChosenCharacter(int chosenCharacter){
     this.chosenCharacter = chosenCharacter;
   }
   

@@ -12,19 +12,16 @@ public class GameCharacter extends UIObject{
   
   public void render(){
     if(this.image != null){
-      
+      if(this.name.equalsIgnoreCase("Girl") || this.name.equalsIgnoreCase("GothGirl")){
+        tint(255, 128);
+      }
+      image(this.image.getImage(), this.x, this.y, this.bounds.getWidth(), this.bounds.getHeight());
+      noTint();
     }
     else{
-      if(this.definition.equals("MALE")){
-        fill(#0000FF);
-      }
-      else if(this.definition.equals("FEMALE")){
-        fill(#F00060);
-      }
-      else if(this.definition.equals("NONE")){
-        fill(#666666);
-      }
+      fill(#FFFFFF);
       rect(this.x, this.y, this.bounds.bWidth, this.bounds.bHeight);
+      noFill();
     }
   }
   

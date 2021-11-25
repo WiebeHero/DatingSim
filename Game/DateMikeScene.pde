@@ -4,8 +4,9 @@ public class DateMikeScene extends Scene{
   private int sceneProgression, score;
   private ArrayList<Button> buttons;
   private ArrayList<Conversation> convos;
-  private CustomCharacter character;
+  private CustomCharacter character, player;
   private TextBox textBox;
+  private Text endText;
   private Empty empty;
   private Ending ending;
   private Background background;
@@ -21,6 +22,7 @@ public class DateMikeScene extends Scene{
   public void constructScene(){
     UIManager uiManager = this.uiManager;
     this.character = new CustomCharacter("Mike", null, 500, 500, 100, 100, Enums.RenderFrom.CENTER);
+    this.player = new CustomCharacter(this.sceneManager.getCharacterManager().getPlayerName(), null, 500, 500, 100, 100, Enums.RenderFrom.CENTER);
     this.background = new Background(null, 0.0D, 0.0D, 1300, 800);
     Text text = new Text("", 20, #FFFFFF, 4D, 22.5D, Enums.RenderFrom.TOP_LEFT);
     this.textBox = new TextBox(text, this.imageManager.getImage("TextBox"), 50.0D, 87.5D, 1200, 150, Enums.RenderFrom.CENTER);
@@ -91,31 +93,39 @@ public class DateMikeScene extends Scene{
         changeScene();
       }
     };
+    this.endText = new Text("THE END", 50, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
+    this.endText.setRendering(false);
     box.addObject(this.background);
+    box.addObject(this.player);
     box.addObject(this.character);
     box.addObject(this.textBox);
     box.addObject(this.buttons.get(0));
     box.addObject(this.buttons.get(1));
     box.addObject(this.buttons.get(2));
     box.addObject(this.buttons.get(3));
+    box.addObject(this.endText);
     box.addObject(this.empty);
     uiManager.addObject(box);
-    this.changeScene();
   }
   
   public void changeScene(){
     Conversation conversation = this.convos.get(sceneProgression);
-    if(ending == null){
+    if(this.ending == null){
       this.dialogue(this.convos.get(sceneProgression));
     }
     else{
-      this.dialogue(this.ending.getConvos().get(sceneProgression));
-      printArray(this.ending.getConvos());
+      if(this.ending.){
+        this.dialogue(this.ending.getConvos().get(sceneProgression));
+        printArray(this.ending.getConvos());
+      }
+      else{
+        sceneProgression--;
+        this.endText.setRendering(true);
+      }
     }
   }
   
   private void dialogue(Conversation conversation){
-    println(conversation == null);
     switch(conversation.getProceedType()){
       case BACKGROUND:
         BackgroundScene background = (BackgroundScene)conversation;
@@ -131,7 +141,6 @@ public class DateMikeScene extends Scene{
         for(int i = 0; i < texts.size(); i++){
           if(texts.get(i).contains("%playername%")){
             texts.set(i, texts.get(i).replace("%playername%", sceneManager.getCharacterManager().getPlayerName()));
-            println(texts.get(i));
           }
           if(!texts.get(i).contains("null")){
             finalText += texts.get(i);
@@ -208,6 +217,31 @@ public class DateMikeScene extends Scene{
         else if(characterData.getType().equals("Percentages")){
           character.setXPercent(characterData.getXPercent(), false);
           character.setYPercent(characterData.getYPercent(), true);
+        }
+        if(character.getImage() != null){
+          character.getImage().setFlipped(characterData.isFlipped());
+        }
+        sceneProgression++;
+        this.changeScene();
+        break;
+      case PLAYER:
+        CharacterData playerData = (CharacterData)conversation;
+        player.getBounds().setWidth((float)playerData.getWidth());
+        player.getBounds().setHeight((float)playerData.getHeight());
+        println("Here we are!");
+        println(sceneManager.getCharacterManager().getChosenCharacter());
+        player.setImage(playerData.getImage(sceneManager.getCharacterManager().getChosenCharacter()));
+        player.setRenderingFrom(playerData.getRenderingFrom(), false);
+        if(playerData.getType().equals("Coordinates")){
+          player.setX(playerData.getX(), false);
+          player.setY(playerData.getY(), true);
+        }
+        else if(playerData.getType().equals("Percentages")){
+          player.setXPercent(playerData.getXPercent(), false);
+          player.setYPercent(playerData.getYPercent(), true);
+        }
+        if(player.getImage() != null){
+          player.getImage().setFlipped(playerData.isFlipped());
         }
         sceneProgression++;
         this.changeScene();

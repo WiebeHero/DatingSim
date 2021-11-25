@@ -3,13 +3,15 @@ public class Image{
   private PImage customImage; 
   private int imageWidth, imageHeight;
   private String identifier;
+  private boolean flipped;
   
-  public Image(PImage customImage, int imageWidth, int imageHeight, String identifier){
+  public Image(PImage customImage, int imageWidth, int imageHeight, String identifier, boolean flipped){
     
     this.customImage = customImage;
     this.imageWidth = imageWidth;
     this.imageHeight = imageHeight;
     this.identifier = identifier;
+    this.flipped = flipped;
     
   }
   
@@ -44,4 +46,11 @@ public class Image{
     return this.identifier;
   }
   
+  public boolean isFlipped(){
+    return this.flipped;
+  }
+  
+  public void setFlipped(boolean flipped){
+    this.flipped = flipped;
+  }
 }

@@ -52,7 +52,7 @@ public class ImageManager{
           if(splitted.length == 2){
             if(splitted[1].contains("png") || file.getName().contains("PNG") || file.getName().contains("jpg") || file.getName().contains("JPG")){
               PImage pImage = loadImage(file.getPath());
-              this.images.add(new Image(pImage, pImage.width, pImage.height, splitted[0]));
+              this.images.add(new Image(pImage, pImage.width, pImage.height, splitted[0], false));
             }
           }
         }
