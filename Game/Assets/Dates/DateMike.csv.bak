@@ -1,5 +1,51 @@
 DataType,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8
 Background,Starbucks
-
-
-Character,Mike1,Percentages,50.0,50.0,210,570,CENTER
+Dialogue,*You’re on your way to your date with Mark at Starbucks.,You get in and order a coffee.*
+Dialogue,*The barista asks you what kind of drink you want.*
+Dialogue,What drink do you want?
+Question,Hot Chocolate,Matcha,Mocha Frappuccino,1,1,1
+Dialogue, 
+Dialogue,*You wait for your drink and look around curiously*,*your eyes catch the glimpse of Mark*
+Dialogue,Barista: Hello your drink is ready!
+Question,Get your drink,1
+Dialogue, 
+Dialogue,*You grab your drink and walk up to Mark*
+Dialogue,”%playername%”: Hey Mark, I’m your Date for today ;)
+Dialogue,Mark: Hey “Your Name”,Nice to meet you!
+Dialogue,Mark: I was afraid you weren't going to come today.,but nice that you made it!
+Dialogue,”Your name”: Mark....:) How can you think something like this,You’re cute I would not pass this opportunity.
+Dialogue,*What will you do?*
+Question,Offer Mark a sip of your coffee,Drink it alone,3,1
+Dialogue, 
+Dialogue,Mark: You have a great taste in coffee!
+Dialogue,”your name”: Its “Add Coffee Name”.
+Dialogue,+Will you buy Mark a coffee?
+Question,Buy Mark a coffee, Don't pay Mark’s coffee,3,1
+Dialogue, 
+Dialogue,*Mark gets his coffee* Mark: You want to go for a walk with me? I would love to get to know you better!
+Question,Yea sure!,Meh; I would rather stay inside it looks quite chilly outside.,3,1
+Dialogue, 
+Background,CityPark
+Dialogue,*You both went out and walked to the park nearby,*you feel the fresh air flowing through your hair.*,You look right..... you look at Mark...,Seeing how he too enjoys the simple things in life such as grabbing a coffee and going for s stroll...
+Dialogue,Mark: I’m glad I went to that coffee shop because I got to meet such a wonderful person like you!,Will I ever get to see you again?
+Question,Kiss them,Give them your number,“I don’t feel the connection Mark I need to go...”,2,3,1
+Dialogue,
+End,
+BadEnding,
+Background,ForestBad
+Dialogue,Oooga booga i won
+Dialogue,YESYESYSE
+NeutralEnding,
+Dialogue,Aight so coll
+Dialogue,Ain't this cool
+GoodEnding,
+Dialogue,*You and Mark walk for hours talking about all sorts of things*,*You guys walk so long that you end up walking to the forest*
+Background,ForestGood
+Dialogue,*The forest is beautiful in this time of the year.*,*The birds are chirping and the sun is shining.*
+Dialogue,”Your name”: The forest is breath-taking.
+Dialogue,Mark: Yes though it is getting late already so we should probably go back soon.
+Dialogue,Mark: But before we go.,I uh.,I have to ask you something.
+Dialogue,”Your name”: What is it Mark?
+Dialogue,Mark: I was wondering if you would like to go on another date with me?
+Dialogue,”Your name”: I'd love to Mark!
+Dialogue,*You and Mark plan a next date together*,*You guys keep talking whilst he walks you home to make sure you get there safe*
