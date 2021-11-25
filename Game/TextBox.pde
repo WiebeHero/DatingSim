@@ -31,6 +31,7 @@ public class TextBox extends UIObject{
   }
   
   public void click(){}
+  public void press(){}
   
   public Image getBackground(){
     return this.background;

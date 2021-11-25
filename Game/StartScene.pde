@@ -15,7 +15,7 @@ public class StartScene extends Scene{
     Text text = new Text("PLAY", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
     Button button = new Button(text, this.imageManager.getImage("Button"), 50.0D, 50.0D, 400, 100, Enums.RenderFrom.CENTER){
       public void click(){
-        sceneManager.setActiveScene("CHARACTER_SELECTION");
+        sceneManager.setActiveScene("NAME_SELECTION");
       }
     };
     box.addObject(button);
@@ -24,7 +24,7 @@ public class StartScene extends Scene{
     text = new Text("SETTINGS", 20, #FFFFFF, 50.0D, 50.0D, Enums.RenderFrom.CENTER);
     button = new Button(text, this.imageManager.getImage("Button"), 50.0D, 70.0D, 400, 100, Enums.RenderFrom.CENTER){
       public void click(){
-        sceneManager.setActiveScene("CHARACTER_SELECTION");
+        sceneManager.setActiveScene("NAME_SELECTION");
       }
     };
     box.addObject(button);

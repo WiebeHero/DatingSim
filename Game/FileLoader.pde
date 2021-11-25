@@ -117,7 +117,7 @@ public class FileLoader{
         ending = new Ending(Enums.ProceedType.BAD_ENDING);
       }
     }
-    convos.add(ending);
+    convos.add(ending); 
     return convos;
   }
 }

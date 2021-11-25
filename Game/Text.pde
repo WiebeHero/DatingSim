@@ -26,6 +26,14 @@ public class Text extends UIObject {
     fill(this.coloring);
     text(text, this.x, this.y);
   }
+  
+  public void click(){
+    
+  }
+  
+  public void press(){
+    
+  }
 
   public String getContents() {
     return this.text;
@@ -50,7 +58,4 @@ public class Text extends UIObject {
     return this.font;
   }
   
-  public void click(){
-    
-  }
 }

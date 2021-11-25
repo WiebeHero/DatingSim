@@ -6,4 +6,5 @@ public class Empty extends UIObject{
   
   public void render(){}
   public void click(){}
+  public void press(){}
 }

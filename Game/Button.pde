@@ -41,16 +41,20 @@ public class Button extends UIObject{
     }
   }
   
+  public void click(){
+    
+  }
+  
+  public void press(){
+    
+  }
+  
   public void setScore(int score){
     this.score = score;
   }
   
   public int getScore(){
     return this.score;
-  }
-  
-  public void click(){
-    
   }
   
   public Text getText(){

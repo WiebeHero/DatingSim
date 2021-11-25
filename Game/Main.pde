@@ -22,6 +22,10 @@ public class Main{
     this.sceneManager.click();
   }
   
+  public void press(){
+    this.sceneManager.press();
+  }
+  
   public void constructScenes(){
     this.sceneManager.constructScenes();
   }

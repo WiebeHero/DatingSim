@@ -29,6 +29,15 @@ public class SceneManager {
       }
     }
   }
+  
+  public void press(){
+    for(int i = 0; i < this.scenes.size(); i++){
+      Scene scene = this.scenes.get(i);
+      if(scene.getIdentifier().equals(this.activeScene)){
+        scene.press();
+      }
+    }
+  }
 
   public void constructScenes() {
     //WHICH SCENE IT HAS TO START IN
@@ -38,6 +47,11 @@ public class SceneManager {
     StartScene startScene = new StartScene("START_SCENE", this, this.imageManager);
     startScene.constructScene();
     this.scenes.add(startScene);
+    
+    //NAME SELECTION SCENE
+    NameScene nameScene = new NameScene("NAME_SELECTION", this, this.imageManager);
+    nameScene.constructScene();
+    this.scenes.add(nameScene);
   
     //CHARACTER SELECTION SCENE
     CharacterSelectionScene characterScene = new CharacterSelectionScene("CHARACTER_SELECTION", this, this.imageManager);

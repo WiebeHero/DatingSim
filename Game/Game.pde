@@ -21,3 +21,9 @@ void mousePressed(){
     main.click();
   }
 }
+
+void keyPressed(){
+  if(keyPressed){
+    main.press();
+  }
+}

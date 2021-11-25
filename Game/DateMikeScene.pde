@@ -115,6 +115,7 @@ public class DateMikeScene extends Scene{
   }
   
   private void dialogue(Conversation conversation){
+    println(conversation == null);
     switch(conversation.getProceedType()){
       case BACKGROUND:
         BackgroundScene background = (BackgroundScene)conversation;
@@ -128,6 +129,10 @@ public class DateMikeScene extends Scene{
         ArrayList<String> texts = dialogue.getDialogue();
         String finalText = "";
         for(int i = 0; i < texts.size(); i++){
+          if(texts.get(i).contains("%playername%")){
+            texts.set(i, texts.get(i).replace("%playername%", sceneManager.getCharacterManager().getPlayerName()));
+            println(texts.get(i));
+          }
           if(!texts.get(i).contains("null")){
             finalText += texts.get(i);
           }

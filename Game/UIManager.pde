@@ -40,4 +40,13 @@ public class UIManager{
     }
   }
   
+  public void press(){
+    for(int i = 0; i < this.objects.size(); i++){
+      UIObject object = this.objects.get(i);
+      if(object.isRendering()){
+        object.press();
+      }
+    }
+  }
+  
 }

@@ -22,6 +22,10 @@ abstract public class Scene{
     }
   }
   
+  public void press(){
+    this.uiManager.press();
+  }
+  
   public UIManager getUIManager(){
     return this.uiManager; 
   }
