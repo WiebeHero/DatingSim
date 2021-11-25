@@ -15,12 +15,12 @@ Character,Mike1,Coordinates,300,700,420,1140,CENTER
 Dialogue,”%playername%”: Hey Mark, I’m your Date for today ;)
 Dialogue,Mark: Hey “Your Name”,Nice to meet you!
 Dialogue,Mark: I was afraid you weren't going to come today.,but nice that you made it!
-Dialogue,”%playername%”: Mark....:) How can you think something like this,You’re cute I would not pass this opportunity.
+Dialogue,”Your name”: Mark....:) How can you think something like this,You’re cute I would not pass this opportunity.
 Dialogue,*What will you do?*
 Question,Offer Mark a sip of your coffee,Drink it alone,3,1
 Dialogue, 
 Dialogue,Mark: You have a great taste in coffee!
-Dialogue,”%playername%”: Yes; it's delicious.
+Dialogue,”your name”: Yes; it's delicious.
 Dialogue,Will you buy Mark a coffee?
 Question,Buy Mark a coffee,Don't pay Mark’s coffee,Pay half of his order,3,1,2
 Dialogue, 
@@ -37,28 +37,28 @@ Dialogue,
 Dialogue,*You and Mark walk for hours talking about all sorts of things*,*You guys walk so long that you end up walking to the forest*
 Background,ForestGood
 Dialogue,*The forest is beautiful in this time of the year.*,*The birds are chirping and the sun is shining.*
-Dialogue,”%playername%”: The forest is breath-taking.
+Dialogue,”Your name”: The forest is breath-taking.
 Dialogue,Mark: Yes though it is getting late already so we should probably go back soon.
 Dialogue,Mark: But before we go.,I uh.,I have to ask you something.
-Dialogue,”%playername%”: What is it Mark?
+Dialogue,”Your name”: What is it Mark?
 Dialogue,Mark: I was wondering if you would like to go on another date with me?
-Dialogue,”%playername%”: I'd love to Mark!
+Dialogue,”Your name”: I'd love to Mark!
 Dialogue,*You and Mark plan a next date together*,*You guys keep talking whilst he walks you home to make sure you get there safe*
 NeutralEnding
 Dialogue, 
 Dialogue,*You and Mark decide to sit on a bench in the park and talk for a bit*
-Dialogue,”%playername%”: I didn't know there was such a beautiful park nearby.
+Dialogue,”Your name”: I didn't know there was such a beautiful park nearby.
 Dialogue, Mark: I come here pretty often when I want to be alone or when I'm a bit overwhelmed., The atmosphere here is very calming.
-Dialogue,”%playername%”: Yes it really is.
-Dialogue,”%playername%”: It's beginning to get dark so I should probably head home soon., Would you like to go on a date again some time?
+Dialogue,”Your name”: Yes it really is.
+Dialogue,”Your name”: It's beginning to get dark so I should probably head home soon., Would you like to go on a date again some time?
 Dialogue,Mark: I uh,I did really enjoy talking to you today,But I don't think I feel a romantic connection with you.
-Dialogue,”%playername%”: I understand.,I had a lot of fun though.,Would you maybe want to hang out as friends?
+Dialogue,”Your name”: I understand.,I had a lot of fun though.,Would you maybe want to hang out as friends?
 Dialogue,Mark: Yeah that sounds fun.
 Dialogue,*You and Mark keep talking for a while and go home afterwards.*,*You might not have found your true love but you made a genuine friend.*
 BadEnding
 Dialogue, 
 Dialogue,*While you wander around the park you notice that Mark has a sour expression on his face*
-Dialogue,”%playername%”: Hey... why do you look so upset? Is something wrong?
-Dialogue,“Mark”: IS SOMETHING WRONG?!,ARE YOU KIDDING ME %playername%?!,I’VE NEVER THOUGHT MEETING SOMEBODY NEW COULD BE SUCH A WASTE OF TIME...
-Dialogue,“%playername%”; Oh... I am sorry Mark but it’s mutual...,You aren’t a very interesting person either!
+Dialogue,”Your Name”: Hey... why do you look so upset? Is something wrong?
+Dialogue,“Mark”: IS SOMETHING WRONG?!,ARE YOU KIDDING ME ”Your Name”?!,I’VE NEVER THOUGHT MEETING SOMEBODY NEW COULD BE SUCH A WASTE OF TIME...
+Dialogue,“Your name”; Oh... I am sorry Mark but it’s mutual...,You aren’t a very interesting person either!
 Dialogue,*Mark looks in awe and before you could decipher his expression,He removes the lid of his cup and dumps his remaining coffee on top of you,He turns around and leaves*
