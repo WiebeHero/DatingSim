@@ -15,6 +15,8 @@ public class NameScene extends Scene{
     Button button = new Button(text2, this.imageManager.getImage("Button"), 50.0D, 60.0D, 100, 30, Enums.RenderFrom.CENTER){
       public void click(){
         CharacterManager characterManager = sceneManager.getCharacterManager();
+        Input input = (Input)uiManager.getObject(1);
+        Text text = input.getInput();
         if(text.getContents().length() != 0){
           characterManager.setPlayerName(text.getContents());
         }
