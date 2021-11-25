@@ -33,6 +33,10 @@ public class CustomCharacter extends UIObject{
     
   }
   
+  public void press(){
+    
+  }
+  
   public void setImage(Image image){
     this.image = image;
     if(this.image != null){

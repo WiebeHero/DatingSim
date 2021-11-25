@@ -30,6 +30,8 @@ public class GameCharacter extends UIObject{
   
   public void click(){}
   
+  public void press(){}
+  
   public String getName(){
     return this.name;
   }

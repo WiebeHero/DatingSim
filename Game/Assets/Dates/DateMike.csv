@@ -1,9 +1,10 @@
 DataType,Option1,Option2,Option3,Option4,Option5,Option6,Option7,Option8
 Background,Starbucks
-Dialogue,*You’re on your way to your date with Mark at Starbucks.*,*You get in and order a coffee.* 
+Character,Mike1,Percentages,50.0,50.0,210,570,CENTER
+Dialogue,*You’re on your way to your date with Mark at Starbucks.,You get in and order a coffee.*
 Dialogue,*The barista asks you what kind of drink you want.*
 Dialogue,What drink do you want?
-Question,Hot Chocolate,Matcha,Mocha Frappuccino,1,2,3
+Question,Hot Chocolate,Matcha,Mocha Frappuccino,1,1,1
 Dialogue, 
 Dialogue,*You wait for your drink and look around curiously*,*your eyes catch the glimpse of Mark*
 Dialogue,Barista: Hello your drink is ready!
@@ -11,7 +12,7 @@ Question,Get your drink,0
 Dialogue, 
 Dialogue,*You grab your drink and walk up to Mark*
 Character,Mike1,Coordinates,300,700,420,1140,CENTER
-Dialogue,”your name”: Hey Mark, I’m your Date for today ;)
+Dialogue,”%playername%”: Hey Mark, I’m your Date for today ;)
 Dialogue,Mark: Hey “Your Name”,Nice to meet you!
 Dialogue,Mark: I was afraid you weren't going to come today.,but nice that you made it!
 Dialogue,”Your name”: Mark....:) How can you think something like this,You’re cute I would not pass this opportunity.
@@ -32,7 +33,7 @@ Dialogue,Mark: I’m glad I went to that coffee shop because I got to meet such 
 Question,Kiss them,Give them your number,“I don’t feel the connection Mark; I'm sorry...”,2,3,-3
 End
 GoodEnding
-Dialogue, 
+Dialogue,
 Dialogue,*You and Mark walk for hours talking about all sorts of things*,*You guys walk so long that you end up walking to the forest*
 Background,ForestGood
 Dialogue,*The forest is beautiful in this time of the year.*,*The birds are chirping and the sun is shining.*

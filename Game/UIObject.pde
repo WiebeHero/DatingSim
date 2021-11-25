@@ -150,6 +150,8 @@ public abstract class UIObject{
   
   public abstract void click();
   
+  public abstract void press();
+  
   public float getX(){
     return this.x;
   }

@@ -17,6 +17,10 @@ public class Background extends UIObject{
     
   }
   
+  public void press(){
+    
+  }
+  
   public void setBackground(Image image){
     this.image = image;
     if(image != null){

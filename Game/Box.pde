@@ -17,15 +17,6 @@ public class Box extends UIObject{
     }
   }
   
-  public void addObject(UIObject object){
-    object.setParent(this);
-    this.objects.add(object);
-  }
-  
-  public UIObject getObject(int index){
-    return this.objects.get(index);
-  }
-  
   public void click(){
     for(int i = 0; i < this.objects.size(); i++){
       UIObject object = this.objects.get(i);
@@ -34,6 +25,22 @@ public class Box extends UIObject{
         object.click();
       }
     }
+  }
+  
+  public void press(){
+    for(int i = 0; i < this.objects.size(); i++){
+      UIObject object = this.objects.get(i);
+      object.press();
+    }
+  }
+  
+  public void addObject(UIObject object){
+    object.setParent(this);
+    this.objects.add(object);
+  }
+  
+  public UIObject getObject(int index){
+    return this.objects.get(index);
   }
   
 }
