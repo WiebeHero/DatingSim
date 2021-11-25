@@ -10,7 +10,7 @@ Dialogue,Barista: Hello your drink is ready!
 Question,Get your drink,0
 Dialogue, 
 Dialogue,*You grab your drink and walk up to Mark*
-Character,Mike1,Coordinates,300,700,420,1140,CENTER
+Character,Mike1,Coordinates,400,500,420,1140,CENTER
 Dialogue,”your name”: Hey Mark, I’m your Date for today ;)
 Dialogue,Mark: Hey “Your Name”,Nice to meet you!
 Dialogue,Mark: I was afraid you weren't going to come today.,but nice that you made it!
